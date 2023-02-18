@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Задание 1
+        alert( null || 2 || undefined ); // 2; пройдет мимо null, т. к. это false, остановится на 2, т. к. это true, эту 2 и выведет
+
+        // Задание 2
+        alert( alert(1) || 2 || alert(3) ); // 1 и 2;  alert(1) выведет 1,  вернет undefined, т. е false. Следующее выражение вернет true, выведет 2, продвижение направо закончится
+
+        // Задание 3
+        alert( 1 && null && 2 ); // null;  т. к. 1 - true, будет пропущен, null - false, на этом остановится и вернет null
+
+        // Задание 4
+        alert( alert(1) && alert(2) ); // 1 и undefined; alert(1) выведет 1, вернет undefined, это и выведет, т. к. вычисления остановятся
+
+        // Задание 5
+        alert( null || 2 && 3 || 4 ); // 3; сначала выражение (2 && 3) преобразуется в 3 (оба операнда true, значит вернется последнее), пройдет мимо null, т. к. это false, остановится на 3 и выведет
+
+        // Задание 6
+        let age;
+        if(age >= 14 && age <= 90) {}
+
+        // Задание 7
+        if(!(age >= 14 && age <= 90)) {}
+        if(age < 14 || age > 90) {}
+
+        // Задание 8
+        if (-1 || 0) alert( 'first' ); // Выполнится, значение выражения -1
+        if (-1 && 0) alert( 'second' ); // Не выполнится, значение выражения 0
+        if (null || -1 && 1) alert( 'third' ); // Выполнится, значение выражения 1
+
+        // Задание 9
+        let user = prompt('Кто там?');
+        if(user == 'Админ') {
+            let password = prompt('Пароль?');
+            if(password == 'Я Главный') {
+                alert('Здравствуйте!');
+            } else if(password == null || password == '') {
+                alert('Отменено');
+            } else {
+                alert('Неверный пароль');
+            }
+        } else if(user == null || user == '') {
+            alert('Отменено');
+        } else {
+            alert('Я вас не знаю')
+        }
+    </script>
+</body>
+</html>
