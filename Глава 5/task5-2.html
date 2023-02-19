@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Задание 1
+        let number1 = +prompt('Первое число:');
+        let number2 = +prompt('Второе число:');
+        number1 = Number.isFinite(number1) ? number1 : 0;
+        number2 = Number.isFinite(number2) ? number2 : 0;
+        
+        alert(number1 + number2);
+
+        // Задание 2
+        alert( 1.35.toFixed(1) );
+        alert( 6.35.toFixed(1) ); 
+        // Из-за бесконечной дроби в двоичном представлении числа теряют точность, поэтому могут округляться некорректно.
+        alert( 6.35.toFixed(16) ) // 6.3499999999999996 вместо 6.3500000000000000
+        alert((Math.round(6.35 *10)) / 10);
+
+        // Задание 3
+        function readNumber() {
+            let result;
+            while (!!(result = (prompt('Введите число')))) {
+                if(!(Number.isNaN(+result) || !result.trim())) {
+                    return +result;
+                };
+            }
+            return null;
+        }
+        alert(readNumber());
+
+        // Задание 4
+        let i = 0;
+        while (i != 10) {
+            i += 0.2;
+            if(i > 9.9 && i < 10.1) {
+                alert(i); //9.999999999999996
+                break;                                          
+            }
+        }
+        // из-за дробного числа в итераторе i при двоичных преобразованиях теряется точность, в итоге i никогда не будет равно точно 10,
+        // цикл становится бесконечным
+
+        // Задание 5
+        function random(min, max) {
+            return min + Math.random() * (max - min);
+        }
+
+        alert( random(1, 5) ); 
+        alert( random(4, 5) ); 
+        alert( random(1, 5) ); 
+
+        // Задание 6
+        function randomInteger(min, max) {
+            return Math.floor(min + Math.random() * (max - min + 1));
+        }
+
+        alert( randomInteger(1, 5) );
+        alert( randomInteger(1, 5) );
+        alert( randomInteger(1, 5) );
+    </script>
+</body>
+</html>

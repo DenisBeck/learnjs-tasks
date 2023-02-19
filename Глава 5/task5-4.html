@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Задание 1
+        let fruits = ["Яблоки", "Груша", "Апельсин"];
+        // добавляем новое значение в "копию"
+        let shoppingCart = fruits;
+        shoppingCart.push("Банан");
+        // что в fruits?
+        alert( fruits.length ); // 4
+        // Массив является объектом, поэтому переменные shoppingCart и fruits указывают на один объект, значит свойство length равно 4
+
+        // Задание 2
+        const styles = ['Джаз', 'Блюз'];
+        styles.push('Рок-н-ролл');
+        styles[Math.floor(styles.length / 2)] = 'Классика';
+        alert(styles.shift());
+        styles.unshift('Рэп', 'Регги');
+
+        // Задание 3
+        let arr = ["a", "b"];
+
+        arr.push(function() {
+            alert( this );
+        });
+
+        arr[2](); // "a", "b", function() {alert(this)}
+        // функция как элемент массива - это по сути метод объекта, обращение к this внутри функции укажет на сам массив, то есть выведет все его элементы
+
+        // Задание 4
+        function sumInput() {
+            let sum = 0;
+            let inputItem;
+            const inputItems = [];
+            while(
+                (inputItem = prompt('Введите число, а для выхода - любой нечисловой символ')) && 
+                inputItem.trim() && 
+                Number.isFinite(+inputItem)
+            ) {
+                inputItems.push(+inputItem);
+            }
+
+            for(let item of inputItems) {
+                sum += item
+            }
+            return sum;
+        }
+        alert(sumInput());
+
+        // Задание 5
+        function getMaxSubSum(arr) {
+            let sum = 0;
+            let tmpSum = 0;
+            for(let i = 0; i < arr.length; i++) {
+                tmpSum += arr[i];
+                sum = Math.max(sum, tmpSum);
+                if(tmpSum < 0) tmpSum = 0;
+            }
+            return sum;
+        }
+
+        alert(getMaxSubSum([-1, 2, 3, -9]))  //  5 (сумма выделенных элементов)
+        alert(getMaxSubSum([2, -1, 2, 3, -9]))  //  6
+        alert(getMaxSubSum([-1, 2, 3, -9, 11]))  //  11
+        alert(getMaxSubSum([-2, -1, 1, 2]))  //  3
+        alert(getMaxSubSum([100, -9, 2, -3, 5]) )  // 100
+        alert(getMaxSubSum([1, 2, 3]))  //  6 (берём все)
+        alert(getMaxSubSum([-1, -2, -3]))  //  0
+    </script>
+</body>
+</html>
