@@ -37,12 +37,12 @@
         }
 
         let arr1 = [5, 3, 8, 1];
-        filterRangeInPlace(arr2, 1, 4); // удалены числа вне диапазона 1..4
+        filterRangeInPlace(arr1, 1, 4); // удалены числа вне диапазона 1..4
         alert( arr1 ); // [3, 1]
 
         // Задание 4
         let arr2 = [5, 2, 1, -10, 8];
-        arr1.sort((a, b) => b - a)
+        arr2.sort((a, b) => b - a)
 
         alert( arr2 ); // 8, 5, 2, 1, -10
 
@@ -159,7 +159,6 @@
         //Задание 12
         function unique(arr) {
             const uniqueArray = [];
-            console.log(uniqueArray.includes('Кришна'));
             for(let i = 0; i < arr.length; i++) {
                 if(!uniqueArray.includes(arr[i])) uniqueArray.push(arr[i]);
             }

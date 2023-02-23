@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Задание 1
+        function unique(arr) {
+            let arrSet = new Set();
+            let uniqueArray = [];
+            for(let i = 0; i < arr.length; i++) {
+                arrSet.add(arr[i]);
+            }
+            for(let setItem of arrSet) {
+                uniqueArray.push(setItem);
+            }
+            return uniqueArray;
+        }
+
+        let values = ["Hare", "Krishna", "Hare", "Krishna",
+        "Krishna", "Krishna", "Hare", "Hare", ":-O"
+        ];
+
+        alert( unique(values) ); // Hare,Krishna,:-O
+
+        //Задание 2
+        function aclean(arr) {
+            let map = new Map();
+            for(let arrItem of arr) {
+                map.set(arrItem.split('').sort().join('').toLowerCase(), arrItem);
+            }
+            return Array.from(map.values())
+        }
+
+        
+        let arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
+        alert( aclean(arr) ); // "nap,teachers,ear" или "PAN,cheaters,era"
+
+        // Задание 3
+        let map = new Map();
+
+        map.set("name", "John");
+
+        let keys = map.keys();
+        // push() - это метод массива, но map.keys возвращает итерируемый объект, а не массив. Нужно преобразовать данный массив к объекту
+        keys = Array.from(keys);
+        // Error: keys.push is not a function
+        // Ошибка: keys.push -- это не функция
+        keys.push("more");
+        alert(keys);
+    </script>
+</body>
+</html>
