@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function sumInput() {
+            let sum = 0;
+            let inputItem;
+            const inputItems = [];
+            while(
+                (inputItem = prompt('Введите число, а для выхода - любой нечисловой символ')) && 
+                inputItem.trim() && 
+                Number.isFinite(+inputItem)
+            ) {
+                inputItems.push(+inputItem);
+            }
+
+            for(let item of inputItems) {
+                sum += item
+            }
+            return sum;
+        }
+        alert(sumInput());
+    </script>
+</body>
+</html>

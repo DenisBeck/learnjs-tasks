@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let messages = [
+            {text: "Hello", from: "John"},
+            {text: "How goes?", from: "John"},
+            {text: "See you soon", from: "Alice"}
+        ];
+
+        // Прочитанные сообщения в переменной readMessages
+        let readMessages = new WeakSet();
+        readMessages.add(messages[0]);  // Благодаря использованию WeakSet одно и то же сообщение может быть прочитанным только один раз
+
+        // Проверка сообщения
+        alert(`Было ли сообщение ${messages[0].text} от ${messages[0].from} прочитано? - ${readMessages.has(messages[0])}`);
+        alert(`Было ли сообщение ${messages[1].text} от ${messages[1].from} прочитано? - ${readMessages.has(messages[1])}`);
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Calculator() {
+            this.number1 = 0;
+            this.number2 = 0;
+            this.operations = {
+                '+': (a, b) => a + b,
+                '-': (a, b) => a - b,
+            }
+            this.calculate = function(str) {
+                const opItems = str.split(' ');
+                this.number1 = Number.isFinite(+opItems[0]) ? +opItems[0] : 0;
+                this.number2 = Number.isFinite(+opItems[2]) ? +opItems[2] : 0;;
+                return this.operations[opItems[1]](this.number1, this.number2);
+            }
+            this.addMethod = function(name, func) {
+                this.operations[name] = func;
+            }
+        }
+
+        let calc = new Calculator;
+        alert(calc.calculate('3 + 7'));
+
+        let powerCalc = new Calculator;
+        powerCalc.addMethod("*", (a, b) => a * b);
+        powerCalc.addMethod("/", (a, b) => a / b);
+        powerCalc.addMethod("**", (a, b) => a ** b);
+
+        let result = powerCalc.calculate("2 ** 3");
+        alert( result ); // 8
+    </script>
+</body>
+</html>

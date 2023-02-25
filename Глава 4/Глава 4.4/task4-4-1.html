@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function makeUser() {
+            return {
+                name: "John",
+                ref: this
+            };
+        }
+
+        let user = makeUser();
+
+        alert( user.ref.name ); // Каким будет результат?
+        // Результатом будет знвчение свойства name объекта Window, в котором идет вызов функции makeUser(). 
+        // Потому что this не привязана к объекту, свойству которого присвоена, а определяется в момент исполнения кода,
+        // в данном случае через функцию makeUser() в глобальном контексте Window
+        console.log(user.ref) // Window
+    </script>
+    
+</body>
+</html>
