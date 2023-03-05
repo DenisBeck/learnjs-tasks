@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Задание 2
+        function Rabbit(name) {
+            this.name = name;
+        }
+        Rabbit.prototype.sayHi = function() {
+            alert(this.name);
+        };
+
+        let rabbit = new Rabbit("Rabbit");
+
+        rabbit.sayHi(); // "Rabbit"
+        Rabbit.prototype.sayHi(); // undefined
+        Object.getPrototypeOf(rabbit).sayHi(); // undefined
+        rabbit.__proto__.sayHi(); // undefined
+        // В первом случае this == rabbit, где имеется свойство name
+        // В остальных случаях this == Rabbit.prototype, где свойства name нет
+    </script>
+</body>
+</html>

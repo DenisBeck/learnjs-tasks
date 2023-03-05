@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Задание 1
+        function sumTo(n) {
+            // Цикл
+            // let sum = 0;
+            // for(let i = 1; i <= n; i++) {
+            //     sum += i;
+            // }
+            // return sum;
+
+            // Рекурсия
+            // return (n == 1) ? 1 : n + sumTo(n - 1);
+
+            // Арифметическая прогрессия
+            return (1 + n) * n / 2;
+        }
+        alert(sumTo(100));
+        // Самый быстрый - это прогрессия, потому что производится всего одно вычисление в одном контексте
+        // Самый медленный - рекурсия, потому что функция с вычислениями вызывается n раз
+        // sumTo(100000) при помощи рекурсии не выполняется из-за переполнения стека
+    </script>
+</body>
+</html>

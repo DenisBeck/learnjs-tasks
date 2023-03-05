@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Задание 3
+        function fib(n) {
+            let sumPrev = 1;
+            let sumBeforePrev = 1;
+            let sum = 0;
+            if(n < 3) {
+                return 1;
+            }
+            for(let i = 3; i <= n; i++) {
+                sum = sumPrev + sumBeforePrev;
+                sumBeforePrev = sumPrev;
+                sumPrev = sum;
+            }
+
+            return sum;
+        }
+
+        alert(fib(3)); // 2
+        alert(fib(7)); // 13
+        alert(fib(77)); // 5527939700884757
+    </script>
+</body>
+</html>
