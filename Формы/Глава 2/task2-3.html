@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #mouse {
+            position: relative;
+            top: 0;
+            left: 0;
+            display: inline-block;
+            cursor: pointer;
+            margin: 0;
+            transition: all 0.5s ease 0s;
+        }
+    
+        #mouse:focus {
+            outline: 1px dashed black;
+        }
+      </style>
+</head>
+<body>
+    <!-- Задание 3 -->
+    
+    <p>Кликните по "изображению" мыши и перемещайте её с помощью клавиш со стрелками.</p>
+
+    <pre id="mouse">
+    _   _
+    (q\_/p)
+    /. .\
+    =\_t_/=   __
+    /   \   (
+    ((   ))   )
+    /\) (/\  /
+    \  Y  /-'
+    nn^nn
+    </pre>
+
+
+    <script>
+        let mouse = document.querySelector('#mouse');
+        mouse.addEventListener('click', function(e) {
+            this.setAttribute('tabindex', 0);
+            this.focus();
+        });
+        mouse.addEventListener('keydown', function(e) {
+            let coords = this.getBoundingClientRect();
+            let left = parseInt(this.style.left) || 0;
+            let top = parseInt(this.style.top) || 0;
+            switch (e.key) {
+                case 'ArrowLeft':
+                    left -= coords.width;
+                    break;
+                case 'ArrowRight':
+                    left += coords.width;
+                    break;
+                case 'ArrowUp':
+                    top -= coords.height;
+                    break;
+                case 'ArrowDown':
+                    top += coords.height;
+                    break;
+            }
+            this.style.left = left + 'px';
+            this.style.top = top + 'px';
+        })
+    </script>
+
+</body>
+</html>

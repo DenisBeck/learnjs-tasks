@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 4px;
+        }
+        th {
+            cursor: pointer;
+        }
+        th:hover {
+            background: yellow;
+        }
+      </style>
+</head>
+<body>
+    <table id="grid">
+        <thead>
+            <tr>
+                <th data-type="number">Возраст</th>
+                <th data-type="string">Имя</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>5</td>
+                <td>Вася</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Петя</td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>Женя</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>Маша</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Илья</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        let table = document.querySelector('#grid');
+        table.addEventListener('click', (e) => {
+            if(!(e.target.dataset.type != 'string' || e.target.dataset.type != 'number')) return;
+            let index = e.target.cellIndex;
+            let content = Array.from(table.rows).filter((item, i) => i).sort((a, b) => {
+                if(e.target.dataset.type == 'string') {
+                    return a.children[e.target.cellIndex].innerHTML > b.children[e.target.cellIndex].innerHTML ? 1 : -1;
+                }
+                if(e.target.dataset.type == 'number') {
+                    return a.children[e.target.cellIndex].innerHTML - b.children[e.target.cellIndex].innerHTML;
+                }
+            })
+            table.children[1].innerHTML = '';
+            for(let i = 0; i < content.length; i++) {
+                table.children[1].append(content[i]);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #elem {
+            width: 300px;
+            overflow-y: scroll;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Задание 1 -->
+    <div id="elem">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id magni nam, nihil officiis cum sit ullam sequi voluptatibus, quas fuga corrupti. Consectetur neque ab unde quisquam, impedit dolore. Nostrum, et.</div>
+    <script>
+        let scrollBottom = elem.scrollHeight - elem.scrollTop - elem.clientHeight;
+        console.log(`${scrollBottom}(scrollBottom) = ${elem.scrollHeight}(elem.scrollHeight) - ${elem.scrollTop}(elem.scrollTop) - ${elem.clientHeight}(elem.clientHeight)`);
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #field {
+            width: 200px;
+            height: 150px;
+            border: 10px solid black;
+            background-color: #00FF00;
+            overflow: hidden;
+        }
+        #ball {
+            position: absolute;
+            transition: all 0.5s ease 0s;
+        }
+      </style>
+</head>
+<body>
+    <!-- Задание 4 -->
+    Нажмите на поле для перемещения мяча.
+    <br> Мяч не должен выходить за границы поля.
+
+    <div id="field">
+        <img src="https://ru.js.cx/clipart/ball.svg" id="ball"> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    </div>
+    <script>
+        let field = document.querySelector('#field');
+        let ball = document.querySelector('#ball');
+
+        field.addEventListener('click', (e) => {
+            ball.style.left = e.clientX - field.clientLeft - ball.clientWidth / 2 + 'px';
+            ball.style.top = e.clientY - field.clientTop - ball.clientWidth / 2 + 'px';
+        })
+        
+    </script>
+</body>
+</html>

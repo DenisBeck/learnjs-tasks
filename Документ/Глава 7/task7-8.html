@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hour {
+            color: red;
+        }
+        .min {
+            color: green;
+        }
+        .sec {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <!-- Задание 8 -->
+    <div id="clock">
+        <span class="hour"></span>:<span class="min"></span>:<span class="sec"></span>
+    </div>
+
+    <!-- клик по этой кнопке вызовет clockStart() -->
+    <input type="button" onclick="clockStart()" value="Старт">
+
+    <!-- клик по этой кнопке вызовет clockStop() -->
+    <input type="button" onclick="clockStop()" value="Стоп">
+    <script>
+        let timerId;
+        
+        function clockStart() {
+            timerId = setInterval(() => {
+                let date = new Date();
+                let hours = date.getHours();
+                let minutes = date.getMinutes();
+                let seconds = date.getSeconds();
+                document.getElementsByClassName('hour')[0].innerHTML = hours < 10 ? '0' + hours : hours;
+                document.getElementsByClassName('min')[0].innerHTML = minutes < 10 ? '0' + minutes : minutes;
+                document.getElementsByClassName('sec')[0].innerHTML = seconds < 10 ? '0' + seconds : seconds;
+            }, 1000)
+        }
+        function clockStop() {
+            clearInterval(timerId);
+        }
+        clockStart();
+    </script>
+</body>
+</html>
